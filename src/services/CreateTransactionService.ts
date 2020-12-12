@@ -8,7 +8,7 @@ import AppError from '../errors/AppError';
 interface Request {
   title: string;
   value: number;
-  type: string;
+  type: 'income' | 'outcome';
   category: string;
 }
 
@@ -45,10 +45,10 @@ class CreateTransactionService {
     }
 
     const transaction = transactionsRepository.create({
-      title, //<---- dá erro nessa linha
+      title, 
       value,
       type,
-      category: category_id,
+      category_id,
     });
 
     await transactionsRepository.save(transaction);
